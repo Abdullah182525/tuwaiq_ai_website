@@ -28,18 +28,40 @@
         <input type="Radio" name="Marriage" Value="NotMarried" id="NotMarried">
         <br>
         <br>
+        <h2>متوسط سكر الدم</h2>
+        <input type="number" id="AGL">
+        <br>
+        <br>
+        <h2>كتلة الجسم</h2>
+        <input type="number" id="BMI">
+        <br>
+        <br>
         <button id="button">ارسال</button>
+        <h1 id="message"></h1>
     </div>
 
     <script>
         let male = document.getElementById('Male')
         let age = document.getElementById('Age')
         let YesMarried = document.getElementById('YesMarried')
+        let agl = document.getElementById('AGL')
+        let bmi = document.getElementById('BMI')
+        let mesg = document.getElementById('message')
+
+        function OnMessage(msg,color){
+            mesg.innerHTML = msg
+            mesg.Co
+            setTimeout(5000,function(){
+                mesg.innerHTML = ''
+            })
+        }
+
         document.getElementById('button').onclick = function(){
-            fetch('/check',{method:'POST',body:JSON.stringify({Gender:male.checked,Age:age.value,Married:YesMarried.checked}),headers:{'Content-Type':'application/json'}})
+            fetch('/check',{method:'POST',body:JSON.stringify({Gender:male.checked,Age:age.value,Married:YesMarried.checked,AGL:agl.value,BMI:bmi.value}),headers:{'Content-Type':'application/json'}})
         .then(Response => Response.json())
         .then(function(data){
-            console.log(data)
+
+            OnMessage()
         })
         }
     </script>
