@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Stroke Prediction App</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+label, input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+#result {
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <h1>Stroke Prediction</h1>
+    <form id="predictionForm">
+        <label for="gender">Gender (1 for male, 0 for female):</label><br>
+        <input type="number" id="gender" name="gender" min="0" max="1"><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age"><br>
+
+        <label for="ever_married">Ever Married (1 for yes, 0 for no):</label><br>
+        <input type="number" id="ever_married" name="ever_married" min="0" max="1"><br>
+
+        <label for="avg_glucose_level">Average Glucose Level:</label><br>
+        <input type="number" id="avg_glucose_level" name="avg_glucose_level" step="any"><br>
+
+        <label for="bmi">BMI:</label><br>
+        <input type="number" id="bmi" name="bmi" step="any"><br>
+
+        <input type="submit" value="Predict Stroke Risk">
+    </form>
+
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>

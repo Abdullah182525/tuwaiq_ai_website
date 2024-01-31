@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>هل انت معرض لسكتة دماغية؟</h1>
+    <div>
+        <h2>الجنس</h2>
+        <label Name="Gender">ذكر</label>
+        <INPUT TYPE="Radio" Name="Gender" Value="Male" id="Male">
+        <br>
+        <labe Name="Gender">انثى</label>
+        <INPUT TYPE="Radio" Name="Gender" Value="Female" id="Female">
+        <br>
+        <br>
+        <h2>العمر</h2>
+        <br>
+        <input type="number" id="Age">
+        <br>
+        <h2>هل انت متزوج؟</h2>
+        <label name="Marriage">نعم</label>
+        <input type="Radio" name="Marriage" Value="Married" id="YesMarried">
+        <br>
+        <label name="Marriage">لا</label>
+        <input type="Radio" name="Marriage" Value="NotMarried" id="NotMarried">
+        <br>
+        <br>
+        <button id="button">ارسال</button>
+    </div>
+
+    <script>
+        let male = document.getElementById('Male')
+        let age = document.getElementById('Age')
+        let YesMarried = document.getElementById('YesMarried')
+        document.getElementById('button').onclick = function(){
+            fetch('/check',{method:'POST',body:JSON.stringify({Gender:male.checked,Age:age.value,Married:YesMarried.checked}),headers:{'Content-Type':'application/json'}})
+        .then(Response => Response.json())
+        .then(function(data){
+            console.log(data)
+        })
+        }
+    </script>
+</body>
+</html>
