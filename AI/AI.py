@@ -6,7 +6,7 @@ import pandas as pd
 #تعديل عبدالله اليحيى
 model = load('logistic_regression_model.joblib')
 
-feature_names = ['gender', 'age', 'ever_married', 'avg_glucose_level', 'bmi']
+feature_names = ['gender', 'age','ever_married', 'avg_glucose_level', 'bmi']
 
 data = [int(sys.argv[1]),float(sys.argv[2]),int(sys.argv[3]),float(sys.argv[4]),float(sys.argv[5])]
 

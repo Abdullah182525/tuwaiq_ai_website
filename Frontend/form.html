@@ -67,20 +67,24 @@
         let agl = document.getElementById('AGL')
         let bmi = document.getElementById('BMI')
         let mesg = document.getElementById('message')
-
-        function OnMessage(msg,color){
-            mesg.innerHTML = msg
-            mesg.style = 'color:'
-            setTimeout(5000,function(){
-                mesg.innerHTML = ''
-            })
+        function OnMessage(msg){
+            if(msg != undefined){
+                mesg.innerHTML = msg
+            }else{
+                mesg.innerHTML = ""
+            }
         }
 
         document.getElementById('button').onclick = function(){
+            mesg.innerHTML = ''
             fetch('/check',{method:'POST',body:JSON.stringify({Gender:male.checked,Age:age.value,Married:YesMarried.checked,AGL:agl.value,BMI:bmi.value}),headers:{'Content-Type':'application/json'}})
         .then(Response => Response.json())
         .then(function(data){
-            console.log(data['message'])
+            male.checked = false
+            age.value = null
+            YesMarried.checked = false
+            agl.value = null
+            bmi.value = null
             if(data['message'] == true){
                 OnMessage('فرصة اصابتك عالية')
             }else{
