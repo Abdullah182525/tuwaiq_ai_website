@@ -17,7 +17,7 @@ server.post('/check',function(req,res){
     let em = Number(req.body['Married'])
     let agl = Number(req.body['AGL'])
     let bmi = Number(req.body['BMI'])
-    let spawn_ai_app = require('child_process').spawn('python',['AI.py',gender,age * 1.5,em,agl * 5,bmi*2],{cwd:path.join(__dirname,'../AI')})
+    let spawn_ai_app = require('child_process').spawn('python',['AI.py',gender,age,em,agl,bmi],{cwd:path.join(__dirname,'../AI')})
     spawn_ai_app.stdout.on('data',function(data){
         console.log(data.toString())
         if(Number(data.toString()) == 1){
