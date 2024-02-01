@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>مقياس السكتة الدماغية</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+        *{
+            font-family:"IBM Plex Sans Arabic";
+        }
+
+        body{
+            background-color: beige;
+        }
+
+        #box{
+            background-color: bisque;
+            width:25%;
+            height:850px;
+            border:1px solid black ;
+            margin:auto;
+            text-align: center;
+            border-radius: 25px 25px;
+        }
+    </style>
 </head>
 <body>
-    <h1>هل انت معرض لسكتة دماغية؟</h1>
-    <div>
+    <div id="box">
+        <h1>هل انت معرض لسكتة دماغية؟</h1>
         <h2>الجنس</h2>
         <label Name="Gender">ذكر</label>
         <INPUT TYPE="Radio" Name="Gender" Value="Male" id="Male">
@@ -50,7 +70,7 @@
 
         function OnMessage(msg,color){
             mesg.innerHTML = msg
-            mesg.Co
+            mesg.style = 'color:'
             setTimeout(5000,function(){
                 mesg.innerHTML = ''
             })
@@ -60,8 +80,12 @@
             fetch('/check',{method:'POST',body:JSON.stringify({Gender:male.checked,Age:age.value,Married:YesMarried.checked,AGL:agl.value,BMI:bmi.value}),headers:{'Content-Type':'application/json'}})
         .then(Response => Response.json())
         .then(function(data){
-
-            OnMessage()
+            console.log(data['message'])
+            if(data['message'] == true){
+                OnMessage('فرصة اصابتك عالية')
+            }else{
+                OnMessage('فرصة اصابتك منخفضة')
+            }
         })
         }
     </script>
